@@ -63,8 +63,10 @@ button,select,input{font:inherit;color:inherit}
 .pageacts.solo{justify-content:flex-end;margin:4px 0 0}
 article.card[data-gid]{scroll-margin-top:calc(var(--tbh,72px) + 14px)}
 @media (max-width:560px){
-  .topbar.has-nav .brand .wordmark{display:none}
-  .topbar.has-nav .brand{flex:none}
+  /* on phones the name stacks into a small two-line mark beside the badge, like a jersey patch */
+  .topbar.has-nav .brand{flex:0 1 auto;gap:9px}
+  .topbar.has-nav .brand .wordmark{display:flex;flex-direction:column;align-items:flex-start;font-size:clamp(11px,3.4vw,14px);letter-spacing:.16em;line-height:1.08;overflow:visible}
+  .topbar.has-nav .brand .wordmark .w2{color:var(--accent);letter-spacing:.42em}
   .tbr{flex:1 1 auto;justify-content:flex-end}
   .tbjump{flex:0 1 auto;height:32px;padding:0 28px 0 11px;gap:6px;font-size:13px;box-shadow:0 0 0 1.5px var(--accent-ink),0 2px 5px rgba(0,0,0,.3)}
   .tbjump::after{right:10px;border-left-width:4px;border-right-width:4px;border-top-width:5px}
@@ -291,7 +293,7 @@ details.lgf[open] summary::after{content:'▴'}
         <g transform="rotate(-28 32 32)"><ellipse cx="32" cy="32" rx="15.5" ry="10" fill="#8B4E2F" stroke="#1F2A44" stroke-width="2.5"/>
           <g stroke="#F1E8D5" stroke-width="1.8" stroke-linecap="round"><line x1="25.5" y1="32" x2="38.5" y2="32"/><line x1="28" y1="29.5" x2="28" y2="34.5"/><line x1="32" y1="29.5" x2="32" y2="34.5"/><line x1="36" y1="29.5" x2="36" y2="34.5"/><line x1="20.5" y1="28" x2="20.5" y2="36"/><line x1="43.5" y1="28" x2="43.5" y2="36"/></g></g>
       </svg>
-      <span class="wordmark">MATCHUP HUB</span>
+      <span class="wordmark"><span class="w1">MATCHUP</span> <span class="w2">HUB</span></span>
     </a>
     <nav class="tbr" id="tbnav" aria-label="Game navigation" hidden>
       <label class="tbjump" id="tbJumpWrap"><span class="live-dot" id="tbLive" hidden></span><span class="jl" id="tbJumpLabel">Jump to game</span>
