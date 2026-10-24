@@ -66,7 +66,12 @@ article.card[data-gid]{scroll-margin-top:calc(var(--tbh,72px) + 14px)}
   .topbar.has-nav .brand .wordmark{display:none}
   .topbar.has-nav .brand{flex:none}
   .tbr{flex:1 1 auto;justify-content:flex-end}
-  .tbjump{flex:1 1 auto;max-width:none}
+  .tbjump{flex:0 1 auto;height:32px;padding:0 28px 0 11px;gap:6px;font-size:13px;box-shadow:0 0 0 1.5px var(--accent-ink),0 2px 5px rgba(0,0,0,.3)}
+  .tbjump::after{right:10px;border-left-width:4px;border-right-width:4px;border-top-width:5px}
+  .tbjump .live-dot{width:7px;height:7px}
+  .tbjump .lc{display:none}
+  .totop{width:32px;height:32px}
+  .totop svg{width:15px;height:15px}
   .pagehead{gap:0 12px}
   .pagehead .sub{margin-bottom:8px}
   .pageacts{margin:0 0 12px -8px}
@@ -875,7 +880,7 @@ function renderTopNav(){
     if (document.activeElement !== sel) { const html = jumpOptions(); if (sel.innerHTML !== html) sel.innerHTML = html; }   // don't rebuild while the picker is open
     const live = S.games.filter(g => g.status.type.state === 'in').length;
     $('#tbLive').hidden = !live;
-    $('#tbJumpLabel').textContent = live ? `Jump to game · ${live} live` : 'Jump to game';
+    $('#tbJumpLabel').innerHTML = live ? `Jump to game<span class="lc"> · ${live} live</span>` : 'Jump to game';
   }
   sizeBar();
 }
